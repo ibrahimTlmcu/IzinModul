@@ -10,4 +10,9 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\IzinModul.DataContext\IzinModul.DataContext.csproj" />
+    <ProjectReference Include="..\IzinModulCommon\IzinModulCommon.csproj" />
+  </ItemGroup>
+
 </Project>

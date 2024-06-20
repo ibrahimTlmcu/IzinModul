@@ -8,6 +8,9 @@ namespace IzinModul.DataContext.Contracts
 {
     public interface IUnitOfWork : IDisposable
     {
+        IEmployeeLeaveAlllocationRepository employeeLeaveAlllocationRepository { get; }
+        IEmployeeLeaveRequesRepository employeeLeaveRequesRepository { get; }
+        IEmployeeLeaveTypeRepository employeeLeaveTypeRepository { get; }
         void Save(); 
     }
 }

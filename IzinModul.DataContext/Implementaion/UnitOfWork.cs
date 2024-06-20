@@ -30,8 +30,14 @@ namespace IzinModul.DataContext.Implementaion
         public IEmployeeLeaveAlllocationRepository employeeLeaveAlllocation { get; private set; }
         public IEmployeeLeaveRequesRepository employeeLeaveRequestRepository { get; private set; }
 
-        public IEmployeeLeaveTypeRepository employeLeaveTypeRepository { get; private set; }    
-        
+        public IEmployeeLeaveTypeRepository employeLeaveTypeRepository { get; private set; }
+
+        public IEmployeeLeaveAlllocationRepository employeeLeaveAlllocationRepository => throw new NotImplementedException();
+
+        public IEmployeeLeaveRequesRepository employeeLeaveRequesRepository => throw new NotImplementedException();
+
+        public IEmployeeLeaveTypeRepository employeeLeaveTypeRepository => throw new NotImplementedException();
+
         public void Dispose()
         {
             _ctx.Dispose();
