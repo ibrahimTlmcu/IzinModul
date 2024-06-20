@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddAutoMapper(typeof(Mapper));
+
 //builder.Services.AddScoped<IEmployeeLeaveAlllocationRepository, EmployeeLeaveAlllocationRepository>();
 //builder.Services.AddScoped<IEmployeeLeaveRequesRepository, EmployeeLeaveRequestRepository>();
 //builder.Services.AddScoped<IEmployeeLeaveTypeRepository, EmployeeLeaveTypeRepository>();
@@ -22,6 +22,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<IzinModulDataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("connection"),
     sqlOptions => sqlOptions.MigrationsAssembly("IzinTakipModul")));
+builder.Services.AddAutoMapper(typeof(Mapper));
 
 // Add services to the container.
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();

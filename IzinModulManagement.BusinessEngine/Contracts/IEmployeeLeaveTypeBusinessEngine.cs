@@ -1,5 +1,6 @@
 ﻿using IzinModul.DataContext.DbModels;
 using IzinModulCommon.ResultModels;
+using IzinModulCommon.VModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace IzinModulManagement.BusinessEngine.Contracts
 {
     public interface IEmployeeLeaveTypeBusinessEngine
     {
-        Result<List<EmployeeLeaveType>> GetAllEmployeeLeaveTypes();
+        Result<List<EmployeeLeaveTypeVM>> GetAllEmployeeLeaveTypes();
 
 
     }

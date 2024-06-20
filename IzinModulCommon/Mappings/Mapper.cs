@@ -14,7 +14,7 @@ namespace IzinModulCommon.Mappings
 
         public Mapper()
         {
-            CreateMap<EmployeeLeaveType, EmployeeLeaveRequestVM>().ReverseMap();
+            CreateMap<EmployeeLeaveType, EmployeeLeaveTypeVM>().ReverseMap();
             // Gelen tablolarin yerini degistridik.
             CreateMap<EmployeeLeaveAlllocation, EmployeeLeaveAllocationsVM>().ReverseMap();
             CreateMap<EmployeeLeaveReques, EmployeeLeaveRequestVM>().ReverseMap();

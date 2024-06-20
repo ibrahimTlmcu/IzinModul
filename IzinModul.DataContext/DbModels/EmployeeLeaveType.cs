@@ -12,11 +12,17 @@ namespace IzinModul.DataContext.DbModels
     {
 
         
-        public string Name { get; set; }
+        public string ?Name { get; set; }
 
-        public int DefultDays { get; set; }
+        public int DefaultDays { get; set; }
 
         public DateTime DateCreated { get; set; }
 
-    }
+
+		public void SetEmployeeType(string name)
+		{
+			this.Name = name;
+		}
+
+	}
 }

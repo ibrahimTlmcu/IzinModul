@@ -8,14 +8,15 @@ namespace IzinModulCommon.ResultModels
 {
     public class Result<T> : IResult //Herhangi bir tip gelebilir diye Generic tanimladik
     {
-        public bool IsSuccess { get; set; }
+
+		public bool IsSuccess { get; set; }
         public string Message { get ; set; }
 
 
         public T Data {  get; set; }
         public int TotalCount { get; set; }
 
-        public Result(bool isSucces,string message):this(isSucces,message,default(T))
+        public Result(bool isSucces,string message, List<VModels.EmployeeLeaveTypeVM> leaveTypes) :this(isSucces,message,default(T))
         {
             
         }
@@ -31,5 +32,7 @@ namespace IzinModulCommon.ResultModels
             TotalCount = totalCount;
 
         }
-    }
+
+		
+	}
 }

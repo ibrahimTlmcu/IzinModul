@@ -10,7 +10,7 @@ namespace IzinModulCommon.VModels
     public   class EmployeeLeaveTypeVM : BaseVM
     {
         [Required]
-        public string Name { get; set; }
+        public string ?Name { get; set; }
         public int DefaultDays { get; set; }
         public DateTime DateCreated { get; set; }
 

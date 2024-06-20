@@ -22,23 +22,18 @@ namespace IzinModul.DataContext.Implementaion
         {
             _ctx = ctx;
             employeeLeaveAlllocation = new EmployeeLeaveAlllocationRepository(_ctx);
-            employeeLeaveRequestRepository = new EmployeeLeaveRequestRepository(_ctx);
-            employeLeaveTypeRepository = new EmployeeLeaveTypeRepository(_ctx);
+			employeeLeaveRequesRepository = new EmployeeLeaveRequestRepository(_ctx);
+			employeeLeaveTypeRepository = new EmployeeLeaveTypeRepository(_ctx);
 
         }
 
-        public IEmployeeLeaveAlllocationRepository employeeLeaveAlllocation { get; private set; }
-        public IEmployeeLeaveRequesRepository employeeLeaveRequestRepository { get; private set; }
+		public IEmployeeLeaveAlllocationRepository employeeLeaveAlllocation {  get; private set; }
 
-        public IEmployeeLeaveTypeRepository employeLeaveTypeRepository { get; private set; }
+		public IEmployeeLeaveRequesRepository employeeLeaveRequesRepository { get; private set; }
 
-        public IEmployeeLeaveAlllocationRepository employeeLeaveAlllocationRepository => throw new NotImplementedException();
+		public IEmployeeLeaveTypeRepository employeeLeaveTypeRepository { get; private set; }
 
-        public IEmployeeLeaveRequesRepository employeeLeaveRequesRepository => throw new NotImplementedException();
-
-        public IEmployeeLeaveTypeRepository employeeLeaveTypeRepository => throw new NotImplementedException();
-
-        public void Dispose()
+		public void Dispose()
         {
             _ctx.Dispose();
         }

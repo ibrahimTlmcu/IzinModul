@@ -28,8 +28,8 @@ namespace IzinModulManagement.BusinessEngine.Implementaion
            
          
         }
-
-        public Result<List<EmployeeLeaveTypeVM>> GetAllEmployeeLeaveTypes()
+		
+		public Result<List<EmployeeLeaveTypeVM>> GetAllEmployeeLeaveTypes()
         {
             var data = _unitOfWork.employeeLeaveTypeRepository.GetAll().ToList();
             //if(data != null)
@@ -60,9 +60,6 @@ namespace IzinModulManagement.BusinessEngine.Implementaion
 
         }
 
-		Result<List<EmployeeLeaveType>> IEmployeeLeaveTypeBusinessEngine.GetAllEmployeeLeaveTypes()
-		{
-			throw new NotImplementedException();
-		}
+		
 	}
 }
