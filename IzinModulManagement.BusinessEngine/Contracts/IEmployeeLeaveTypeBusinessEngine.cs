@@ -12,6 +12,7 @@ namespace IzinModulManagement.BusinessEngine.Contracts
     public interface IEmployeeLeaveTypeBusinessEngine
     {
         Result<List<EmployeeLeaveTypeVM>> GetAllEmployeeLeaveTypes();
+        Result<EmployeeLeaveRequestVM> CreateEmployeeLeaveType(EmployeeLeaveTypeVM model);
 
 
     }

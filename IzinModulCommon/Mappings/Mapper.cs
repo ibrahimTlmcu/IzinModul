@@ -19,6 +19,7 @@ namespace IzinModulCommon.Mappings
             CreateMap<EmployeeLeaveAlllocation, EmployeeLeaveAllocationsVM>().ReverseMap();
             CreateMap<EmployeeLeaveReques, EmployeeLeaveRequestVM>().ReverseMap();
             CreateMap<Employee, EmployeeVM>().ReverseMap();
+            CreateMap<EmployeeLeaveType, EmployeeLeaveTypeVM>();
 
 
 

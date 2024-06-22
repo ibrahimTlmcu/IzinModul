@@ -4,6 +4,7 @@ using IzinModul.DataContext.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IzinTakipModul.Migrations
 {
     [DbContext(typeof(IzinModulDataContext))]
-    partial class IzinModulDataContextModelSnapshot : ModelSnapshot
+    [Migration("20240622145211_AddTableLast")]
+    partial class AddTableLast
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,6 +70,7 @@ namespace IzinTakipModul.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("ApprovedEmlooyeId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ApprovedEmplooyeID")
@@ -85,6 +89,7 @@ namespace IzinTakipModul.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("RequestingEmployeeId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("StartDate")
@@ -339,12 +344,15 @@ namespace IzinTakipModul.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TaxId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("Employee");
@@ -383,7 +391,9 @@ namespace IzinTakipModul.Migrations
 
                     b.HasOne("IzinModul.DataContext.DbModels.Employee", "RequestingEmployee")
                         .WithMany()
-                        .HasForeignKey("RequestingEmployeeId");
+                        .HasForeignKey("RequestingEmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("ApprovedEmplooye");
 

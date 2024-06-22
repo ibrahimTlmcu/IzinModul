@@ -1,0 +1,41 @@
+﻿@model IEnumerable<IzinModulCommon.VModels.EmployeeLeaveTypeVM>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+ @if (Model == null || !Model.Any())
+{
+    <p>No leave types available.</p>
+} 
+
+else
+{
+    <div class="col-6 text-left text-white">
+
+        <a class="btn btn-succes" asp-asp-controller="EmployeeLeaveType" asp-action="Create">Izin Tipi Ekle </a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td></td>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+

@@ -12,23 +12,23 @@ namespace IzinModulCommon.VModels
 
     {
     
-        public string RequestingEmployeeId { get; set; }
+        public string ?RequestingEmployeeId { get; set; }
       
-        public EmployeeVM RequestingEmployee { get; set; }
+        public EmployeeVM ?RequestingEmployee { get; set; }
 
 
         /// <summary>
         /// Onaylayan Kullanici bilgileri
         /// </summary>
-        public string ApprovedEmlooyeId { get; set; }
+        public string ?ApprovedEmlooyeId { get; set; }
  
-        public EmployeeVM ApprovedEmplooye { get; set; }
+        public EmployeeVM ?ApprovedEmplooye { get; set; }
 
 
 
         public int EmployeeLeaveTypeId { get; set; }
         [ForeignKey("EmployeeLeaveTypeId")]
-        public EmployeeLeaveTypeVM EmployeeLeaveType { get; set; }
+        public EmployeeLeaveTypeVM?EmployeeLeaveType { get; set; }
 
 
         //-------------------------------------------//

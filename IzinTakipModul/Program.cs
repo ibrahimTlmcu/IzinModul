@@ -9,23 +9,23 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-//builder.Services.AddScoped<IEmployeeLeaveAlllocationRepository, EmployeeLeaveAlllocationRepository>();
-//builder.Services.AddScoped<IEmployeeLeaveRequesRepository, EmployeeLeaveRequestRepository>();
-//builder.Services.AddScoped<IEmployeeLeaveTypeRepository, EmployeeLeaveTypeRepository>();
-
-builder.Services.AddScoped<IEmployeeLeaveTypeBusinessEngine,EmployeeLeaveTypeBusinessEngine>();
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddControllersWithViews();
-
-
+// Add services to the container.
 builder.Services.AddDbContext<IzinModulDataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("connection"),
     sqlOptions => sqlOptions.MigrationsAssembly("IzinTakipModul")));
-builder.Services.AddAutoMapper(typeof(Mapper));
 
-// Add services to the container.
+builder.Services.AddAutoMapper(typeof(Mapper));
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+// Register business engine services
+builder.Services.AddScoped<IEmployeeLeaveTypeBusinessEngine, EmployeeLeaveTypeBusinessEngine>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+// Add Razor Pages with runtime compilation
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+
+// Add controllers with views
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
@@ -33,16 +33,12 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapRazorPages();
@@ -53,8 +49,5 @@ app.UseEndpoints(endpoints =>
         pattern: "{controller=Home}/{action=Index}/{id?}");
     endpoints.MapRazorPages();
 });
-
-
-
 
 app.Run();

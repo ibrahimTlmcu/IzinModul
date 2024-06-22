@@ -22,6 +22,8 @@ namespace IzinModul.DataContext.DataContext
 
         public DbSet<EmployeeLeaveType> EmployeeLeaveTypes { get; set; }
 
+        public DbSet<EmployeeLeaveReques> EmployeeLeaveReques { get; set; }
+
 
 
     }

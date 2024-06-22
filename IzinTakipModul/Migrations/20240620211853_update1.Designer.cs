@@ -4,6 +4,7 @@ using IzinModul.DataContext.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IzinTakipModul.Migrations
 {
     [DbContext(typeof(IzinModulDataContext))]
-    partial class IzinModulDataContextModelSnapshot : ModelSnapshot
+    [Migration("20240620211853_update1")]
+    partial class update1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,52 +58,6 @@ namespace IzinTakipModul.Migrations
                     b.ToTable("EmployeeLeaveAlllocation");
                 });
 
-            modelBuilder.Entity("IzinModul.DataContext.DbModels.EmployeeLeaveReques", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("Approved")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("ApprovedEmlooyeId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ApprovedEmplooyeID")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<bool>("Cancelled")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("EmployeeLeaveTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("EndTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("RequestComments")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("RequestingEmployeeId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApprovedEmplooyeID");
-
-                    b.HasIndex("EmployeeLeaveTypeId");
-
-                    b.HasIndex("RequestingEmployeeId");
-
-                    b.ToTable("EmployeeLeaveReques");
-                });
-
             modelBuilder.Entity("IzinModul.DataContext.DbModels.EmployeeLeaveType", b =>
                 {
                     b.Property<int>("Id")
@@ -109,14 +66,13 @@ namespace IzinTakipModul.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("DateCreated")
+                    b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("DefaultDays")
+                    b.Property<int>("DefaultDays")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -339,12 +295,15 @@ namespace IzinTakipModul.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TaxId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("Employee");
@@ -367,29 +326,6 @@ namespace IzinTakipModul.Migrations
                     b.Navigation("Employee");
 
                     b.Navigation("EmployeeLeaveType");
-                });
-
-            modelBuilder.Entity("IzinModul.DataContext.DbModels.EmployeeLeaveReques", b =>
-                {
-                    b.HasOne("IzinModul.DataContext.DbModels.Employee", "ApprovedEmplooye")
-                        .WithMany()
-                        .HasForeignKey("ApprovedEmplooyeID");
-
-                    b.HasOne("IzinModul.DataContext.DbModels.EmployeeLeaveType", "EmployeeLeaveType")
-                        .WithMany()
-                        .HasForeignKey("EmployeeLeaveTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("IzinModul.DataContext.DbModels.Employee", "RequestingEmployee")
-                        .WithMany()
-                        .HasForeignKey("RequestingEmployeeId");
-
-                    b.Navigation("ApprovedEmplooye");
-
-                    b.Navigation("EmployeeLeaveType");
-
-                    b.Navigation("RequestingEmployee");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -11,23 +11,23 @@ namespace IzinModul.DataContext.DbModels
     {
         //
         //Talepte Bulunan Kullanicilarin bilgileri
-        public string RequestingEmployeeId { get; set; }
+        public string ?RequestingEmployeeId { get; set; }
         [ForeignKey("RequestingEmployeeId")]
-        public Employee RequestingEmployee { get; set; }
+        public Employee ?RequestingEmployee { get; set; }
 
 
         /// <summary>
         /// Onaylayan Kullanici bilgileri
         /// </summary>
-        public string ApprovedEmlooyeId { get; set; }
+        public string ?ApprovedEmlooyeId { get; set; }
         [ForeignKey("ApprovedEmplooyeID")]
-        public Employee ApprovedEmplooye { get; set; }
+        public Employee ?ApprovedEmplooye { get; set; }
 
 
 
         public int EmployeeLeaveTypeId { get; set; }
         [ForeignKey("EmployeeLeaveTypeId")]
-        public EmployeeLeaveType EmployeeLeaveType { get; set; }
+        public EmployeeLeaveType ?EmployeeLeaveType { get; set; }
 
 
         //-------------------------------------------//

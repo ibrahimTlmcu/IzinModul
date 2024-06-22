@@ -1,4 +1,5 @@
-﻿using IzinModulManagement.BusinessEngine.Contracts;
+﻿using IzinModulCommon.VModels;
+using IzinModulManagement.BusinessEngine.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IzinTakipModul.Controllers
@@ -16,12 +17,43 @@ namespace IzinTakipModul.Controllers
         public IActionResult Index()
         {
             var data = _employeeLeaveTypeBusinessEngine.GetAllEmployeeLeaveTypes();
-            if (data.IsSuccess)
-            {
-                var resutl = data.Data;
-                return View(resutl);
-            }
+            
+           
+             var resutl = data.Data;
+            return View(resutl);
+           
+            
+        }
+
+        public IActionResult Create()
+        {
             return View();
         }
+        [HttpPost]
+        public ActionResult Create(EmployeeLeaveTypeVM model)
+        {
+
+            if(ModelState.IsValid)
+            {
+                var data = _employeeLeaveTypeBusinessEngine.CreateEmployeeLeaveType(model);
+                if(data.IsSuccess)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View(model);
+                }
+            }
+            else
+            {
+                return View(model);
+            }
+
+
+            
+        }
+
+
     }
 }
