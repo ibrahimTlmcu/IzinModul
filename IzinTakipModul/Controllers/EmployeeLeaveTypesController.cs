@@ -25,7 +25,7 @@ namespace IzinTakipModul.Controllers
             
         }
 
-        public IActionResult Create()
+        public IActionResult Create() 
         {
             return View();
         }
@@ -52,6 +52,10 @@ namespace IzinTakipModul.Controllers
 
 
             
+        }
+        public IActionResult Edit()
+        {
+            return View();
         }
 
 
