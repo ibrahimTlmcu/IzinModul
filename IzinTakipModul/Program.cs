@@ -16,7 +16,7 @@ builder.Services.AddDbContext<IzinModulDataContext>(options =>
 
 builder.Services.AddAutoMapper(typeof(Mapper));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
+builder.Services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
 // Register business engine services
 builder.Services.AddScoped<IEmployeeLeaveTypeBusinessEngine, EmployeeLeaveTypeBusinessEngine>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

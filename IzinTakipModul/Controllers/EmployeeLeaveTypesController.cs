@@ -91,5 +91,20 @@ namespace IzinTakipModul.Controllers
             }
         }
 
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            if (id <= 0)
+                return Json(new { success = false, message = "Silmek için Kayıt Seçiniz" });
+
+            var data = _employeeLeaveTypeBusinessEngine.RemoveEmployeeLeaveType(id);
+            if (data.IsSuccess)
+                return Json(new { success = data.IsSuccess, message = data.Message });
+            else
+                return Json(new { success = data.IsSuccess, message = data.Message });
+        }
+
+
+
     }
 }

@@ -94,7 +94,7 @@ namespace IzinModulManagement.BusinessEngine.Implementaion
         }
 
 
-         Result<EmployeeLeaveTypeVM> IEmployeeLeaveTypeBusinessEngine.GetAllEmployeeLeaveTypes(int id)
+        Result<EmployeeLeaveTypeVM> IEmployeeLeaveTypeBusinessEngine.GetAllEmployeeLeaveTypes(int id)
         {
             var data = _unitOfWork.employeeLeaveTypeRepository.Get(id);
             if (data != null)
@@ -132,13 +132,27 @@ namespace IzinModulManagement.BusinessEngine.Implementaion
                 return new Result<EmployeeLeaveTypeVM>(false, "Update Succes", default, 0);
 
             }
-        }          
-             
-       
-         
         }
-      
+
+
+
+
+        public Result<EmployeeLeaveTypeVM> RemoveEmployeeLeaveType(int id)
+        {
+            var data = _unitOfWork.employeeLeaveTypeRepository.Get(id);
+            if (data != null)
+            {
+               
+                _unitOfWork.employeeLeaveTypeRepository.Remove(data);
+                _unitOfWork.Save();
+                return new Result<EmployeeLeaveTypeVM>(true, "Update Succes", default, 0);
+            }
+            else
+                return new Result<EmployeeLeaveTypeVM>(false, "Update not", default, 0);
+        }
+
     }
+}
 
 
  

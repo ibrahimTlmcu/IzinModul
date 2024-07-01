@@ -4,6 +4,7 @@ using IzinModul.DataContext.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IzinTakipModul.Migrations
 {
     [DbContext(typeof(IzinModulDataContext))]
-    partial class IzinModulDataContextModelSnapshot : ModelSnapshot
+    [Migration("20240701171405_EmployeeLeaveTypeAddColumnIsActive")]
+    partial class EmployeeLeaveTypeAddColumnIsActive
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

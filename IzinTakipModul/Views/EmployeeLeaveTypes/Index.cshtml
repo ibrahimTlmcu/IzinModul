@@ -7,6 +7,7 @@
 @if (Model == null || !Model.Any())
 {
     <p>No leave types available.</p>
+    <a style="margin-left:40px" class="btn btn-primary" asp-asp-controller="EmployeeLeaveType" asp-action="Create">Izin Tipi Ekle </a>
 }
 else
 {
@@ -36,8 +37,8 @@ else
                                             <td>@item.Id</td>
                                             <td>@item.Name</td>
                                             <td></td>
-                                            <td><button   class="btn btn-danger">Sil</button></td>
-                                            <td><a class="btn btn-info" asp-controller="EmployeeLeaveTypes" asp-action="Edit" asp-route-id="@item.Id"> Duzenle</a></td>
+                                            <td><a class="btn btn-xs btn-danger btnRemove" data-id="@item.Id">Sil</a></td>
+                                            <td><a class="btn btn-info" asp-controller="EmployeeLeaveTypes" asp-action="Edit" asp-route-id="@item.Id">Düzenle</a></td>
                                         </tr>
                                     }
                                 </tbody>
@@ -46,19 +47,53 @@ else
                     </div>
                 </div>
             </div>
-
         </div>
-
         <br />
         <div class="col-2 text-left text-white">
-
             <a style="margin-left:40px" class="btn btn-primary" asp-asp-controller="EmployeeLeaveType" asp-action="Create">Izin Tipi Ekle </a>
         </div>
-
-   
     </div>
+}
+
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".btnRemove").on("click", function () {
+                var id = $(this).data("id");
+
+                swal({
+                    title: 'Silmek İstediğinize Emin Misiniz?',
+                    text: 'Silinen Data Geri Alınamaz!',
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            type: "DELETE",
+                            url: "/EmployeeLeaveTypes/Delete/" + id,
+                            success: function (data) {
+                                if (data.success) {
+                                    toastr.success(data.message);
+                                    location.reload();
+                                } else {
+                                    toastr.error(data.message);
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 
 }
+
+
+
 
 <style>
     body {
@@ -71,7 +106,6 @@ else
         border: 1px solid rgba(0, 0, 0, 0.125);
         border-radius: 0.25rem;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-
     }
 
     .card-title {

@@ -20,6 +20,10 @@ namespace IzinModulManagement.BusinessEngine.Contracts
         //Kayitlari duzenledikten sonra tekrar gondermek icin.
 
         Result<EmployeeLeaveTypeVM> EditEmployeeLeaveType(EmployeeLeaveTypeVM model);
+        Result<EmployeeLeaveTypeVM> RemoveEmployeeLeaveType(int id);
+
+     
+        
 
 
 
