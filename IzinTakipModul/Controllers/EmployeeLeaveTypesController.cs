@@ -53,11 +53,43 @@ namespace IzinTakipModul.Controllers
 
             
         }
-        public IActionResult Edit()
+        [HttpGet]
+        public IActionResult Edit(int id, EmployeeLeaveTypeVM model)
         {
-            return View();
+            
+            if(id < 0)
+            { 
+                return View(model);
+            }
+
+            var data = _employeeLeaveTypeBusinessEngine.GetAllEmployeeLeaveTypes();
+            if (data.IsSuccess)
+            {
+                return View(data.Data);
+            }
+
+            return View(model);
         }
 
+        [HttpPost]
+
+        public ActionResult Edit(EmployeeLeaveTypeVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var data= _employeeLeaveTypeBusinessEngine.EditEmployeeLeaveType(model);
+                if (data.IsSuccess)
+                {
+                    return RedirectToAction("Index");
+                }
+                else return View(model);
+            }
+
+            else
+            {
+                return View(model);
+            }
+        }
 
     }
 }

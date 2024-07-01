@@ -4,38 +4,84 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
- @if (Model == null || !Model.Any())
+@if (Model == null || !Model.Any())
 {
     <p>No leave types available.</p>
-} 
-
+}
 else
 {
-    <div class="col-6 text-left text-white">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Mevcut Izin Turleri</h5>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Sabit Gun Sayisi</th>
+                                        <th>ID</th>
+                                        <th>Izin Tipi</th>
+                                        <th>Status</th>
+                                        <th></th>
+                                        <th>Islem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.DefaultDays</td>
+                                            <td>@item.Id</td>
+                                            <td>@item.Name</td>
+                                            <td></td>
+                                            <td><button   class="btn btn-danger">Sil</button></td>
+                                            <td><a class="btn btn-info" asp-controller="EmployeeLeaveTypes" asp-action="Edit" asp-route-id="@item.Id"> Duzenle</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <a class="btn btn-succes" asp-asp-controller="EmployeeLeaveType" asp-action="Create">Izin Tipi Ekle </a>
+        </div>
+
+        <br />
+        <div class="col-2 text-left text-white">
+
+            <a style="margin-left:40px" class="btn btn-primary" asp-asp-controller="EmployeeLeaveType" asp-action="Create">Izin Tipi Ekle </a>
+        </div>
+
+   
     </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th></th>
-                <th>ID</th>
-                <th>Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td></td>
-                    <td>@item.Id</td>
-                    <td>@item.Name</td>
-                </tr>
-            }
-        </tbody>
-    </table>
 
 }
 
+<style>
+    body {
+        background: #8ee090;
+        background: radial-gradient(ellipse farthest-corner at bottom, #8ee090 0%, #f6f6f6 80%);
+    }
+
+    .card {
+        background-color: white;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 0.25rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+
+    }
+
+    .card-title {
+        font-weight: bold;
+        color: black;
+        margin-bottom: 0.75rem;
+    }
+
+    .table {
+        font-weight: bold;
+        color: black;
+    }
+</style>

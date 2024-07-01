@@ -13,6 +13,15 @@ namespace IzinModulManagement.BusinessEngine.Contracts
     {
         Result<List<EmployeeLeaveTypeVM>> GetAllEmployeeLeaveTypes();
         Result<EmployeeLeaveRequestVM> CreateEmployeeLeaveType(EmployeeLeaveTypeVM model);
+        
+        //Kayitlari getirmek icin
+        Result<EmployeeLeaveTypeVM> GetAllEmployeeLeaveTypes(int id);
+
+        //Kayitlari duzenledikten sonra tekrar gondermek icin.
+
+        Result<EmployeeLeaveTypeVM> EditEmployeeLeaveType(EmployeeLeaveTypeVM model);
+
+
 
 
     }
