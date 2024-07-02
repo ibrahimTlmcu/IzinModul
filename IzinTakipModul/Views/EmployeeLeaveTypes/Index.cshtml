@@ -23,10 +23,10 @@ else
                                     <tr>
                                         <th>Sabit Gun Sayisi</th>
                                         <th>ID</th>
-                                        <th>Izin Tipi</th>
-                                        <th>Status</th>
+                                        <th>İzin Tipi</th>
                                         <th></th>
-                                        <th>Islem</th>
+                                        <th></th>
+                                        <th>İşlem</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -37,7 +37,7 @@ else
                                             <td>@item.Id</td>
                                             <td>@item.Name</td>
                                             <td></td>
-                                            <td><a class="btn btn-xs btn-danger btnRemove" data-id="@item.Id">Sil</a></td>
+                                            <td><a class="btn btn-danger  btnRemove" data-id="@item.Id">Sil</a></td>
                                             <td><a class="btn btn-info" asp-controller="EmployeeLeaveTypes" asp-action="Edit" asp-route-id="@item.Id">Düzenle</a></td>
                                         </tr>
                                     }
@@ -118,4 +118,5 @@ else
         font-weight: bold;
         color: black;
     }
+   
 </style>
