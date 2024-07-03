@@ -13,7 +13,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Dashboard - Analytics | Materio - Bootstrap Material Design Admin Template</title>
+    <title>Izin Takip Sistemi</title>
 
     <meta name="description" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -175,7 +175,7 @@
             <li class="menu-item">
               <a href="" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons mdi mdi-window-maximize"></i>
-                <div data-i18n="Layouts">Layouts</div>
+                <div data-i18n="Layouts">Sayfa 1</div>
               </a>
 
               <ul class="menu-sub">
@@ -211,7 +211,7 @@
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons mdi mdi-flip-to-front"></i>
-                <div data-i18n="Front Pages">Front Pages</div>
+                <div data-i18n="Front Pages">Sayfa 2</div>
                 <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div>
               </a>
               <ul class="menu-sub">
@@ -266,7 +266,7 @@
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons mdi mdi-account-outline"></i>
-                <div data-i18n="Account Settings">Account Settings</div>
+                <div data-i18n="Account Settings">Hesap Ayarları</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
@@ -286,19 +286,22 @@
                 </li>
               </ul>
             </li>
+
+           
+
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons mdi mdi-lock-open-outline"></i>
-                <div data-i18n="Authentications">Authentications</div>
+                <div data-i18n="Authentications">Giriş-Çıkış</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="auth-login-basic.html" class="menu-link" target="_blank">
+                  <a asp-area="Identity" class="menu-link" asp-page="/Account/Login" target="_blank">
                     <div data-i18n="Basic">Login</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="auth-register-basic.html" class="menu-link" target="_blank">
+                            <a asp-area="Identity" class="menu-link" asp-page="/Account/Register" target="_blank">
                     <div data-i18n="Basic">Register</div>
                   </a>
                 </li>
@@ -312,7 +315,7 @@
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons mdi mdi-cube-outline"></i>
-                <div data-i18n="Misc">Misc</div>
+                <div data-i18n="Misc">Sayfa 3</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
@@ -336,7 +339,7 @@
                 target="_blank"
                 class="menu-link">
                 <i class="menu-icon tf-icons mdi mdi-checkbox-marked-circle-outline"></i>
-                <div data-i18n="Form Validation">Form Validation</div>
+                <div data-i18n="Form Validation">Sayfa 4</div>
                 <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div>
               </a>
             </li>
@@ -373,6 +376,7 @@
               <!-- /Search -->
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
+                            <partial name="_LoginPartial" />
                 <!-- Place this tag where you want the button to render. -->
                 <li class="nav-item lh-1 me-3">
                   <a
@@ -392,7 +396,7 @@
                     class="nav-link dropdown-toggle hide-arrow p-0"
                     href="javascript:void(0);"
                     data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online"> <img src="~/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                    <div class="avatar avatar-online"> <img src="~/assets/img/avatars/1.png"  class="w-px-40 h-auto rounded-circle" />
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end mt-3 py-2">

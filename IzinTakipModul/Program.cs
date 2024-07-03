@@ -6,6 +6,8 @@ using IzinModulManagement.BusinessEngine.Contracts;
 using IzinModulManagement.BusinessEngine.Implementaion;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using IzinModul.DataContext.DbModels;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,8 @@ builder.Services.AddDbContext<IzinModulDataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("connection"),
     sqlOptions => sqlOptions.MigrationsAssembly("IzinTakipModul")));
 
+//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<IzinModulDataContext>();
+//builder.Services.AddDefaultIdentity<Employee>().AddEntityFrameworkStores<IzinModulDataContext>();
 builder.Services.AddAutoMapper(typeof(Mapper));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
@@ -21,13 +25,19 @@ builder.Services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
 builder.Services.AddScoped<IEmployeeLeaveTypeBusinessEngine, EmployeeLeaveTypeBusinessEngine>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+        .AddEntityFrameworkStores<IzinModulDataContext>();
+
 // Add Razor Pages with runtime compilation
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+
 
 // Add controllers with views
 builder.Services.AddControllersWithViews();
 
-var app = builder.Build();
+ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
