@@ -12,7 +12,7 @@ namespace IzinModulCommon.ConstantModels
         public const string RecordNotFound = " Kayit Bulunamadi";
         public const string Admin_Role = "Administrator";
         public const string Employee_Role = "Employee";
-        public const string Admin_Email = "ibrahimtulumuc@hotmail.com";
+        public const string Admin_Email = "ibrahimtulumuc1@hotmail.com";
 
         public const string Admin_Password = "Admin123!";
         //---------------------------------------------------------------------------------------//

@@ -1,7 +1,14 @@
 ﻿@using Microsoft.AspNetCore.Identity
 
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@* @inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager *@
+
+@inject SignInManager<IzinModul.DataContext.DbModels.Employee> SignInManager
+@inject UserManager<IzinModul.DataContext.DbModels.Employee> UserManager
+
+
+
+
 @* @inject IHttpContextAccessor HttpContextAccessor 
  *@
 @if (SignInManager.IsSignedIn(User))

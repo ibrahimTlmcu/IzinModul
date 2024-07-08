@@ -8,8 +8,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using IzinModul.DataContext.DbModels;
+using IzinModulCommon.ConstantModels;
+using System.Security.Cryptography;
+using Microsoft.Extensions.DependencyInjection;
 
-    var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<IzinModulDataContext>(options =>
@@ -25,8 +28,9 @@ builder.Services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
 builder.Services.AddScoped<IEmployeeLeaveTypeBusinessEngine, EmployeeLeaveTypeBusinessEngine>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-        .AddEntityFrameworkStores<IzinModulDataContext>();
+builder.Services.AddIdentity<Employee, IdentityRole>()
+    .AddEntityFrameworkStores<IzinModulDataContext>()
+    .AddDefaultTokenProviders();
 
 
 
@@ -43,6 +47,7 @@ var app = builder.Build();
 
 
 
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -52,6 +57,11 @@ if (!app.Environment.IsDevelopment())
 app.UseSession();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+void Configure(IApplicationBuilder app, IWebHostEnvironment env,
+            UserManager<Employee> userManager, RoleManager<IdentityRole> roleManager)
+{
+    SeedData.Seed(userManager, roleManager);
+}
 app.UseRouting();
 app.UseAuthorization();
 app.MapRazorPages();
