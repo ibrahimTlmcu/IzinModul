@@ -24,7 +24,7 @@ namespace IzinModul.DataContext.Implementaion
             employeeLeaveAlllocation = new EmployeeLeaveAlllocationRepository(_ctx);
 			employeeLeaveRequesRepository = new EmployeeLeaveRequestRepository(_ctx);
 			employeeLeaveTypeRepository = new EmployeeLeaveTypeRepository(_ctx);
-
+            employeeRepository = new EmployeeRepository(ctx);
         }
 
 		public IEmployeeLeaveAlllocationRepository employeeLeaveAlllocation {  get; private set; }
@@ -32,6 +32,9 @@ namespace IzinModul.DataContext.Implementaion
 		public IEmployeeLeaveRequesRepository employeeLeaveRequesRepository { get; private set; }
 
 		public IEmployeeLeaveTypeRepository employeeLeaveTypeRepository { get; private set; }
+
+
+        public IEmployeeRepository employeeRepository { get; private set; }
 
 		public void Dispose()
         {

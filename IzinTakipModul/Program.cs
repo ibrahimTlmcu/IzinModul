@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using IzinModul.DataContext.DbModels;
 
-var builder = WebApplication.CreateBuilder(args);
+    var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<IzinModulDataContext>(options =>
@@ -25,11 +25,13 @@ builder.Services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
 builder.Services.AddScoped<IEmployeeLeaveTypeBusinessEngine, EmployeeLeaveTypeBusinessEngine>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-
-
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
         .AddEntityFrameworkStores<IzinModulDataContext>();
 
+
+
+
+builder.Services.AddSession();
 // Add Razor Pages with runtime compilation
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
@@ -37,7 +39,9 @@ builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 // Add controllers with views
 builder.Services.AddControllersWithViews();
 
- var app = builder.Build();
+var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -45,12 +49,11 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Error");
     app.UseHsts();
 }
-
+app.UseSession();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
-
 app.MapRazorPages();
 app.UseEndpoints(endpoints =>
 {

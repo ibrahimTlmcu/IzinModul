@@ -300,6 +300,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -11,6 +11,8 @@ namespace IzinModul.DataContext.Contracts
         IEmployeeLeaveAlllocationRepository employeeLeaveAlllocation { get; }
         IEmployeeLeaveRequesRepository employeeLeaveRequesRepository { get; }
         IEmployeeLeaveTypeRepository employeeLeaveTypeRepository { get; }
+
+        IEmployeeRepository employeeRepository { get; }
         void Save(); 
     }
 }

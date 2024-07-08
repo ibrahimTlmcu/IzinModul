@@ -11,6 +11,9 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using IzinModulCommon.SessionOperations;
+using IzinModul.DataContext.Contracts;
+using Newtonsoft.Json;
 
 namespace IzinTakipModul.Areas.Identity.Pages.Account
 {
@@ -20,6 +23,7 @@ namespace IzinTakipModul.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly IUnitOfWork _uow;
 
         public LoginModel(SignInManager<IdentityUser> signInManager, 
             ILogger<LoginModel> logger,
@@ -45,11 +49,9 @@ namespace IzinTakipModul.Areas.Identity.Pages.Account
             [Required]
             [EmailAddress]
             public string Email { get; set; }
-
             [Required]
             [DataType(DataType.Password)]
             public string Password { get; set; }
-
             [Display(Name = "Remember me?")]
             public bool RememberMe { get; set; }
         }
@@ -84,7 +86,20 @@ namespace IzinTakipModul.Areas.Identity.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
+                    //Kullanıcıdan gelen veri ile eşleşirse
+                    //Diğer gelen verileri al
                     _logger.LogInformation("User logged in.");
+                    //var user = _uow.employeeRepository.GetFirstOrDefault(u => u.Email == Input.Email);
+                    var user = _userManager.FindByEmailAsync(Input.Email); 
+                    if(user != null)
+                    {
+                        var sContext = new SessionContext();
+                        sContext.Email = user.Result.Email;
+                        sContext.FirstName = user.Result.NormalizedUserName;
+                        //sContext.LastName = user.Result.LastName;
+                        sContext.LoginId = user.Result.Id;
+                        HttpContext.Session.SetString("AppUserInfoSession", JsonConvert.SerializeObject(sContext));
+                    }
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
