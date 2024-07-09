@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IzinTakipModul", "IzinTakip
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IzinModul.DataContext", "IzinModul.DataContext\IzinModul.DataContext.csproj", "{D017CC39-5B35-4B0D-AD3A-A3736D5ABCCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IzinModulManagement.BusinessEngine", "IzinModulManagement.BusinessEngine\IzinModulManagement.BusinessEngine.csproj", "{E0100782-73BD-462E-B150-FCA7354CA4A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IzinModulManagement.BusinessEngine", "IzinModulManagement.BusinessEngine\IzinModulManagement.BusinessEngine.csproj", "{E0100782-73BD-462E-B150-FCA7354CA4A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IzinModulCommon", "IzinModulCommon\IzinModulCommon.csproj", "{4D27EC15-930F-4F12-A1BA-21E975B442BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IzinModulCommon", "IzinModulCommon\IzinModulCommon.csproj", "{4D27EC15-930F-4F12-A1BA-21E975B442BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

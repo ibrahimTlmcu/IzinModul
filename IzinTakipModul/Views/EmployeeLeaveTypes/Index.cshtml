@@ -37,7 +37,7 @@ else
                                             <td>@item.Id</td>
                                             <td>@item.Name</td>
                                             <td></td>
-                                            <td><a class="btn btn-danger  btnRemove" data-id="@item.Id">Sil</a></td>
+                                            <td><a class="btn btn-danger btnRemove" data-id="@item.Id">Sil</a></td>
                                             <td><a class="btn btn-info" asp-controller="EmployeeLeaveTypes" asp-action="Edit" asp-route-id="@item.Id">Düzenle</a></td>
                                         </tr>
                                     }
@@ -54,8 +54,6 @@ else
         </div>
     </div>
 }
-
-
 
 @section Scripts {
 
@@ -91,9 +89,6 @@ else
     </script>
 
 }
-
-
-
 
 <style>
     body {

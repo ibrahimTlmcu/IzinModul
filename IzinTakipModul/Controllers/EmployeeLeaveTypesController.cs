@@ -1,5 +1,8 @@
-﻿using IzinModulCommon.VModels;
+﻿using IzinModulCommon.ConstantModels;
+using IzinModulCommon.VModels;
 using IzinModulManagement.BusinessEngine.Contracts;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IzinTakipModul.Controllers
@@ -14,6 +17,7 @@ namespace IzinTakipModul.Controllers
         }
 
         //Burdan gelen veriler Result<T> ile isleme alinacak ve hata basarili gibi mesajlar donebilecek
+        [Authorize(Roles =ResultConstant.Admin_Role)]
         public IActionResult Index()
         {
             var data = _employeeLeaveTypeBusinessEngine.GetAllEmployeeLeaveTypes();
@@ -104,6 +108,10 @@ namespace IzinTakipModul.Controllers
                 return Json(new { success = data.IsSuccess, message = data.Message });
         }
 
+        public IActionResult Giris()
+        {
+            return View();
+        }
 
 
     }

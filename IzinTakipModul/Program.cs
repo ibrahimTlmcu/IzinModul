@@ -32,21 +32,13 @@ builder.Services.AddIdentity<Employee, IdentityRole>()
     .AddEntityFrameworkStores<IzinModulDataContext>()
     .AddDefaultTokenProviders();
 
-
-
-
 builder.Services.AddSession();
 // Add Razor Pages with runtime compilation
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
-
 // Add controllers with views
 builder.Services.AddControllersWithViews();
-
 var app = builder.Build();
-
-
-
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -57,7 +49,8 @@ if (!app.Environment.IsDevelopment())
 app.UseSession();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-void Configure(IApplicationBuilder app, IWebHostEnvironment env,
+
+static void Configure(IApplicationBuilder app, IWebHostEnvironment env,
             UserManager<Employee> userManager, RoleManager<IdentityRole> roleManager)
 {
     SeedData.Seed(userManager, roleManager);
